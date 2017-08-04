@@ -1,0 +1,77 @@
+<!--用户信息页面-->
+<!--依赖：无-->
+<view class="user-conatiner">
+
+    <!-- 头图区域 -->
+    <view class="user-info-container">
+        <image class="user-avatar" src="{{userInfo.avatarUrl}}" />
+        <text class="user-nickname">{{userInfo.nickName}}</text>
+    </view>
+
+    <view class="zan-panel">
+        <navigator class="zan-cell zan-cell--access" url="/pages/address/index/index">
+            <view class="zan-cell__bd">
+                <image src="/images/icons/address.png" />
+                <text>收货地址</text>
+            </view>
+            <view class="zan-cell__ft"></view>
+        </navigator>
+        <navigator class="zan-cell zan-cell--access" url="/pages/goods/favorite/favorite">
+            <view class="zan-cell__bd">
+                <image src="/images/icons/like-empty.png" />
+                <text>我的收藏</text>
+            </view>
+            <view class="zan-cell__ft"></view>
+        </navigator>
+        <navigator class="zan-cell zan-cell--access" url="/pages/goods/history/history">
+            <view class="zan-cell__bd">
+                <image src="/images/icons/history.png" />
+                <text>浏览历史</text>
+            </view>
+            <view class="zan-cell__ft"></view>
+        </navigator>
+        <navigator class="zan-cell zan-cell--access" url="/pages/coupon/index/index">
+            <view class="zan-cell__bd">
+                <image src="/images/icons/cuppon.png" />
+                <text>优惠券</text>
+            </view>
+            <view class="zan-cell__ft"></view>
+        </navigator>
+        <view class="zan-cell zan-cell--access"  catchtap="tips">
+            <view class="zan-cell__bd">
+                <image src="/images/icons/vip.png" />
+                <text>会员卡</text>
+            </view>
+            <view class="zan-cell__ft"></view>
+        </view>
+    </view>
+
+    <!--<view class="zan-panel">
+        <view class="zan-cell zan-cell--access" catchtap="tips">
+            <view class="zan-cell__bd">
+                <image src="/images/icons/cooperate.png" />
+                <text>联系客服</text>
+            </view>
+            <view class="zan-cell__ft">
+            </view>
+        </view>
+        <view class="zan-cell zan-cell--access" catchtap="tips">
+            <view class="zan-cell__bd">
+                <image src="/images/icons/gift.png" />
+                <text>推荐有奖</text>
+            </view>
+            <view class="zan-cell__ft"></view>
+        </view>
+    </view>-->
+
+    <view class="weui-footer">
+        <view class="weui-footer__links">
+            <navigator url="" class="weui-footer__link">笔芯～提供技术支持</navigator>
+        </view>
+        <view class="weui-footer__text">Copyright 无</view>
+    </view>
+
+    <!--底部边线-->
+    <view class="footer-line"></view>
+
+</view>

@@ -1,0 +1,65 @@
+<!--购物车列表页面-->
+<!--依赖模板：购物车项目-->
+
+<import src="/templates/cart/item/cart-item-template.wxml" />
+
+
+<view class="container" wx:if="{{init}}">
+    <view class="cart-header-container" wx:if="{{cart.carts.length > 0}}">
+
+        <view class="cart-shop-info-container">
+            <view class="cart-check-container" catchtap="onCheckAllTap">
+                <view class="zan-icon zan-icon-{{cart.all ? 'checked' : 'check'}}" />
+            </view>
+            <image class="shop-info-icon" src="/images/icons/shop-gray.png" />
+            <text class="shop-info-name">{{shopName}}</text>
+        </view>
+        <text class="cart-batch-edit" catchtap="onBatchTap"> {{cart.batch ? '完成' : '编辑'}}</text>
+    </view>
+
+    <!--占位提示-->
+    <view class="cart-empty-tips" wx:if="{{cart.carts.length == 0}}">
+        <image src="/images/icons/cart-empty.png" />
+        <text>购物车是空的</text>
+    </view>
+
+    <!--购物车内容-->
+    <view class="item-list-container">
+        <block wx:for="{{cart.carts}}" wx:key="cart_id">
+            <template is="cartItemTemplate" data="{{...item, index}}" />
+        </block>
+
+    </view>
+
+    <!--底栏-->
+    <view class="cart-bar-container">
+
+        <view class="cart-check-all-container" catchtap="onCheckAllTap">
+            <view class="zan-icon zan-icon-{{cart.all ? 'checked' : 'check'}}" />
+            <text>全选</text>
+        </view>
+
+        <block wx:if="{{cart.batch}}">
+            <view class="cart-batch-btn-container">
+                <button class="zan-btn zan-btn--small" catchtap="onBatchFav">加入收藏</button>
+                <button class="zan-btn zan-btn--small zan-btn--danger" catchtap="onBatchDelete">删除商品</button>
+            </view>
+        </block>
+        <block wx:else>
+            <view class="cart-check-info-container">
+                <view class="cart-check-price-container">
+                    <text>总计：</text>
+                    <text class="goods-price">￥{{cart.price}}</text>
+                </view>
+                <text class="cart-check-tips-text">不含运费，已优惠￥0.00</text>
+            </view>
+
+            <view class="bar-buy-container {{cart.num == 0 ? 'bar-buy-empty' : ''}}" catchtap="onBuyTap">
+                <text class="text-btn">去结算</text>
+                <text class="text-small">({{cart.num}})</text>
+            </view>
+        </block>
+
+    </view>
+
+</view>

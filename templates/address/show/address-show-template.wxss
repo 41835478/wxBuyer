@@ -1,0 +1,48 @@
+.address-item-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top:25rpx;
+    padding-bottom: 25rpx;
+    background-color: #FFF;
+}
+
+
+.address-icon-container{
+    width: 80rpx;
+    text-align: center;
+}
+
+.address-info-container{
+    display: flex;
+    flex-direction: column;
+    width: 600rpx;
+    flex:1;
+}
+
+.address-info-name{
+    color: #232326;
+    font-size: 30rpx;
+}
+.address-info-phone{
+    font-size: 28rpx;
+    margin-left: 20rpx;
+    color: #232326;
+}
+
+.address-name-phone-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+/*
+* 地址详情
+*/
+.address-info-detail{
+    color: #0A0A0D;
+    font-size: 28rpx;
+}
+.address-detail-container{
+    margin-top: 10rpx;
+}

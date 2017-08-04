@@ -1,0 +1,23 @@
+<!--店铺详情页面-->
+<!--依赖模板：店铺信息模板-->
+<import src="/templates/shop/info/shop-info-template.wxml" />
+<view class="container">
+
+    <!--轮播图-->
+    <swiper class="shop-swiper" indicator-dots="true" autoplay="true" interval="5000" wx:if="{{shop.images.length > 0}}" catchtap="preview">
+        <swiper-item wx:for="{{shop.images}}" wx:key="id">
+            <image src="{{item.url}}"></image>
+        </swiper-item>
+    </swiper>
+
+    <view class="gap"></view>
+
+    <!--店铺名称-->
+    <view class="shop-name-container">
+        <image class="icon-big" src="{{shop.avatar}}"/>
+        <text class="shop-name-font">{{shop.name}}</text>
+    </view>
+    
+    <!--店铺信息模板-->
+    <template is="shopInfoTemplate" data="{{...shop}}"/>
+</view>

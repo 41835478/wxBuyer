@@ -1,0 +1,31 @@
+<!-- 地址项目模板-->
+<!--依赖：无-->
+<template name="addressItemTemplate">
+    <view class="address-item-container" catchtap="onAddressTap">
+
+        <!-- 占位空间 -->
+        <view class="address-empty-container" wx:if="{{!id}}">
+            <image class="address-empty-add" src="/images/icons/plus-square.png"/>
+            <text class="address-empty-text">新增收货地址</text>
+        </view>
+
+        <!--左侧图标-->
+        <view class="address-icon-container" wx:if="{{id}}">
+            <image class="icon-middle" src="/images/icons/address.png"/>
+        </view>
+        <!-- 地址内容 -->
+        <view class="address-info-container" wx:if="{{id}}">
+            <view class="address-name-phone-container">
+                <text class="address-info-name">{{name}}</text>
+                <text class="address-info-phone">{{phone}}</text>
+                <view class="address-default-label zan-label zan-label--primary zan-label--small zan-label--plain" wx:if="{{isDefault == 1}}">默认</view>
+            </view>
+            <view class="address-detail-container">
+                <text class="address-info-detail">{{fullAddress}}</text>
+            </view>
+        </view>
+        
+        <!--右侧图标-->
+        <image class="icon-middle" src="/images/icons/more.png"/>
+    </view>
+</template>

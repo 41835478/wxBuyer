@@ -1,0 +1,27 @@
+@import "/templates/goods/item/goods-item-template.wxss";
+@import "/templates/tab/index.wxss";
+@import "/templates/loadmore/index.wxss";
+.goods-grid-container{
+    background-color: #F4F4F4;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 2rpx;
+}
+
+.goods-grid-tab-fixed{
+    position: fixed;
+    top: 0;
+}
+.goods-grid-tab{
+    z-index: 1000;
+}
+
+.goods-empty-tips{
+    margin-top: 100rpx;
+}
+
+.goods-grid-tab-placeholder{
+    height: 41px;
+}

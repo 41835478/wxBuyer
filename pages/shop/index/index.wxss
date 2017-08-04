@@ -1,0 +1,22 @@
+@import "/templates/shop/item/shop-item-template.wxss";
+@import "/templates/goods/grid/goods-grid-template.wxss";
+@import "/templates/notice/bar/notice-bar-template.wxss";
+@import "/templates/coupon/shelf/coupon-shelf-template.wxss";
+@import "/templates/goods/buy-panel/goods-buy-panel-template.wxss";
+
+page{
+    height: 100%;
+    background-color: #F5F5F5;
+}
+.shop-index-container{
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.footer-line{
+    position: fixed;
+    height: 1px;
+    width: 100%;
+    background-color: #E6E8EB;
+    bottom: 0px;
+}

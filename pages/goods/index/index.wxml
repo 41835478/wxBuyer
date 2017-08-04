@@ -1,0 +1,50 @@
+<!--商品详情页面-->
+<!--依赖模板：商品信息、商品详情、商店详情、购买条， 购买面板-->
+<import src="/templates/goods/info/goods-info-template.wxml" />
+<import src="/templates/goods/detail/goods-detail-template.wxml" />
+<import src="/templates/goods/buy-bar/goods-buy-bar-template.wxml" />
+<import src="/templates/goods/sku/goods-sku-template.wxml" />
+<import src="/templates/goods/score/goods-score-template.wxml" />
+<import src="/templates/goods/buy-panel/goods-buy-panel-template.wxml" />
+<import src="/templates/shop/item-white/shop-item-template.wxml" />
+<import src="/templates/coupon/shelf-panel/coupon-panel-template.wxml" />
+
+
+<view class="goods-index-container" wx:if="{{init}}">
+    <!--基本信息-->
+    <template is="goodsInfoTemplate" data="{{...goods, sku}}" />
+
+    <!-- 操作栏目 -->
+    <view class="zan-panel goods-operate-container"  >
+        <!-- SKU 选择器 -->
+        <template is="goodsSkuTemplate" data="{{sku}}" />
+
+        <!-- 卡券 选择器 -->
+        <template is="couponPanelTemplate" data="{{...shelf}}" />
+
+         <!-- 评价栏目 -->
+        <template is="goodsScoreTemplate" data="{{commentNum}}"/>
+    </view>
+
+    <!--间隔-->
+    <view class="gap"></view>
+
+    <!--店铺信息-->
+    <template is="shopItemTemplate" data="{{...shop}}" />
+
+    <!--间隔-->
+    <view class="gap"></view>
+
+    <!--详情信息-->
+    <template is="goodsDetailTemplate" data="{{details : goods.goodsDetails}}" />
+
+    <!--购买栏-->
+    <template is="goodsBuyBarTemplate" data="{{...goods, cartNum, isFav}}" />
+
+    <!--底栏占位-->
+    <view class="goods-index-footer"></view>
+
+    <!--购买面板-->
+    <template is="goodsBuyPanelTemplate" data="{{...goods, sku}}" />
+
+</view>

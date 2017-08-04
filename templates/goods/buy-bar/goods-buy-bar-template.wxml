@@ -1,0 +1,30 @@
+<!-- 购买动作栏模板-->
+<!--输入：...goods-->
+<!--依赖：无-->
+<template name="goodsBuyBarTemplate">
+    <view class="buy-bar-container">
+
+        <view class="bar-action-container" data-fav='{{isFav}}' catchtap="onLikeTap">
+            <image class="icon-middle" src="/images/icons/like-{{isFav ? 'red' : 'gray'}}.png" />
+            <text>{{isFav ? '已收藏': '收藏' }}</text>
+        </view>
+
+        <view class="gap-v"></view>
+
+        <view class="bar-action-container" catchtap="onToCartTap">
+            <view class="zan-badge">
+                <image class="icon-middle" src="/images/icons/cart-gray.png" />
+                <view class="zan-badge__count">{{cartNum}}</view>
+            </view>
+            <text>购物车</text>
+        </view>
+
+        <view class="bar-cart-container" catchtap="onAddCartTap">
+            <text>加入购物车</text>
+        </view>
+
+        <view class="bar-buy-container" catchtap="onBuyTap">
+            <text>立即购买</text>
+        </view>
+    </view>
+</template>

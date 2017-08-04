@@ -1,0 +1,121 @@
+<!--订单详情页-->
+<!--依赖：地址项目页面、订单项目页面-->
+<import src="/templates/address/show/address-show-template.wxml" />
+<import src="/templates/order/detail-item/order-item-template.wxml" />
+
+<view class="container" wx:if="{{init}}">
+    <!--订单状态栏/需要抽取模板-->
+    <view class="order-status-bar">
+        <image class="order-status-icon" src="/images/icons/status-{{order.status}}.png" wx:if="{{order.status}}" />
+        <view class="order-status-container">
+            <text class="order-status-text">{{order.statusText}}</text>
+            <!-- 订单文本描述/需要抽取到Service中 -->
+            <text class="order-status-desc">{{order.statusDesc}}</text>
+        </view>
+    </view>
+
+    <view class="status-address-gap" />
+
+    <!--最新物流状态预览/展现标志位待确认-->
+    <block wx:if="{{order.isExpress}}">
+        <view class="order-trace-container" catchtap="onOrderTrace">
+            <image class="order-trace-icon" src="/images/icons/car.png" />
+            <view class="trace-info-container">
+                <text class="trace-info-text">{{express.text}}</text>
+                <text class="trace-info-timestape" wx:if="{{express.timestape}}">{{express.timestape}}</text>
+            </view>
+            <image class="order-trace-more" wx:if="{{express.timestape}}" src="/images/icons/more-gray.png" />
+        </view>
+
+        <view class="status-address-gap" />
+    </block>
+    <!--收货地址-->
+    <template is="addressItemTemplate" data="{{name:order.receiveName, phone:order.receivePhone, fullAddress: order.address}}"
+    />
+
+    <image class="address-hr" src="/images/icons/address-hr.png" />
+
+    <!--订单项目-->
+    <template is="orderItemTemplate" data="{{...order}}" />
+
+    <!--订单信息-->
+    <view class="zan-panel zan-panel__top">
+        <view class="zan-cell">
+            <text class="zan-cell__bd">订单号</text>
+            <text class="zan-cell__ft">{{order.uuid}}</text>
+        </view>
+        <view class="zan-cell">
+            <text class="zan-cell__bd">支付方式</text>
+            <text class="zan-cell__ft">{{order.paymentText}}</text>
+        </view>
+        <view class="zan-cell">
+            <text class="zan-cell__bd">配送方式</text>
+            <text class="zan-cell__ft">{{order.deliveryText}}</text>
+        </view>
+        <view class="zan-cell">
+            <text class="zan-cell__bd">买家留言</text>
+            <text class="zan-cell__ft">{{order.message ? order.message : '无'}}</text>
+        </view>
+    </view>
+
+    <view class="zan-panel summary-container">
+        <view class="summary-line-container">
+            <text class="summary-title">商品金额</text>
+            <text class="summary-text">￥{{order.dealPrice}}</text>
+        </view>
+        <view class="summary-line-container">
+            <text class="summary-title">运费</text>
+            <text class="summary-text">+￥{{order.postFee}}</text>
+        </view>
+        <view class="summary-line-container" wx:if="{{order.couponPrice}}">
+            <text class="summary-title">优惠券</text>
+            <text class="summary-text">-￥{{order.couponPrice}}</text>
+        </view>
+        <view class="summary-final-container" wx:if="{{order.status != 1}}">
+            <text class="final-title">实付款：</text>
+            <text class="final-text">￥{{order.finalPrice}}</text>
+        </view>
+
+    </view>
+
+
+    <!--购买栏/需要抽取模板-->
+    <view class="tarde-action-bar" wx:if="{{order.isAction}}">
+
+        <!--待支付（展现操作栏）-->
+        <block wx:if="{{order.status == 1}}">
+            <view>
+                <text class="tarde-total-text">实付款：</text>
+                <text class="tarde-total-price">￥{{order.finalPrice}}</text>
+            </view>
+            <view class="trade-confirm-button" catchtap="onWxPay">
+                <text>去支付</text>
+            </view>
+        </block>
+
+        <!--其他状态（展现按钮栏）-->
+        <view class="tarde-button-panel" wx:else>
+
+            <!--有退款-->
+            <view wx:if="{{order.isRefund}}" class="zan-btn zan-btn--small" catchtap="onRefundInfo">退款详情</view>
+            <!--有物流-->
+            <view wx:if="{{order.isExpress}}" class="zan-btn zan-btn--small" data-order-id="{{orderId}}" catchtap="onOrderTrace">物流查询</view>
+
+            <!--待发货-->
+            <block wx:if="{{order.status == 2}}">
+                <view  wx:if="{{order.paymentType == 1}}" class="zan-btn zan-btn--small " data-order-id="{{orderId}}" catchtap="onOrderRefund">申请退款</view>
+                <view  wx:if="{{order.paymentType == 0}}" class="zan-btn zan-btn--small " data-order-id="{{orderId}}" catchtap="onOrderClose">取消订单</view>
+            </block>
+
+
+            <!--待收货-->
+            <view wx:if="{{order.status == 3}}" class="zan-btn zan-btn--small zan-btn--primary" data-order-id="{{orderId}}" catchtap="onOrderConfirm">确认收货</view>
+
+            <!--已收货-->
+            <view wx:if="{{order.status == 4}}" class="zan-btn zan-btn--small zan-btn--primary" data-order-id="{{orderId}}" catchtap="onOrderComment">评价订单</view>
+
+            <!--退款中-->
+            <view wx:if="{{order.status == 5}}" class="zan-btn zan-btn--small zan-btn--primary" catchtap="onCancelRefund">取消退款</view>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,69 @@
+page{
+    height: 100%;
+    background-color: #f2f2f2;
+}
+
+/*用户信息*/
+.user-info-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300rpx;
+    background-color: #1296db;
+}
+.user-avatar{
+    height:160rpx;
+    width: 160rpx;
+    border-radius: 50%;
+}
+
+.user-nickname{
+    color: white;
+    font-size: 40rpx;
+}
+
+/*列表*/
+.zan-cell__bd{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.zan-cell__bd image{
+    height: 46rpx;
+    width: 46rpx;
+    margin-right: 25rpx;
+    vertical-align: middle;
+}
+
+/*底部边线*/
+.footer-line{
+    position: fixed;
+    height: 1px;
+    width: 100%;
+    background-color: #E6E8EB;
+    bottom: 0px;
+}
+
+.user-func-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFF;
+    margin-top: 20rpx;
+    padding: 10rpx;
+}
+
+.user-func-item{
+    display: flex;
+    font-size: 30rpx;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 20rpx;
+}
+.func-text{
+    font-size: 30rpx;
+    line-height: 60rpx;
+}
+
+.weui-footer{margin-top:30rpx; color:#999;font-size:14px;text-align:center}.weui-footer_fixed-bottom{position:fixed;bottom:.52em;left:0;right:0}.weui-footer__links{font-size:0}.weui-footer__link{display:inline-block;vertical-align:top;margin:0 .62em;position:relative;font-size:14px;color:#586c94}.weui-footer__link:before{content:" ";position:absolute;left:0;top:0;width:1px;bottom:0;border-left:1rpx solid #c7c7c7;color:#c7c7c7;left:-.65em;top:.36em;bottom:.36em}.weui-footer__link:first-child:before{display:none}.weui-footer__text{padding:0 .34em;font-size:12px}
