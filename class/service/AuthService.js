@@ -116,8 +116,8 @@ export default class AuthService {
             if (data.appId) {
                 //校验成功
               console.info('用户服务端登录状态third_session校验成功');
-              wx.setStorageSync("shop_id", '598189c0763a1b23446d6b57');
-              this.saveAuthProperty('shop_id', '598189c0763a1b23446d6b57');
+              wx.setStorageSync("shop_id", app.globalData.shop.code);
+              this.saveAuthProperty('shop_id', app.globalData.shop.code);
               return third_session;
             }
             else {

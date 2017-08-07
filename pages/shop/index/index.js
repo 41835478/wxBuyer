@@ -40,8 +40,8 @@ Page(Object.assign({}, Quantity, Tab, {
 onLoad: function (options) {
     Tips.loading();
     authService.checkLoginCode()
-      .then(this.login, this.session)
-      .then(this.init);
+      .then(this.login, this.session);
+    //  .then(this.init);
     //  .then(this.init, this.session)
     //  .then(this.login);
   },
@@ -56,7 +56,8 @@ onLoad: function (options) {
       err => authService.getWxUserInfo()
         .then(rawUser => authService.checkUserInfo(rawUser))
         .then(rawUser => authService.decodeUserInfo(rawUser))
-        .then(data => authService.saveUserInfo(data.user, data.wx_login_code)));
+        .then(data => authService.saveUserInfo(data.user, data.wx_login_code)))
+        .then(this.init);
   },
 
   /**
@@ -121,7 +122,7 @@ onLoad: function (options) {
     */
   loadNextPage: function () {
     const param = {
-      category_id: this.data.tab.selectedId
+      innerCid: this.data.tab.selectedId
     }
     this.page.next(param).then(data => {
       Tips.loaded();

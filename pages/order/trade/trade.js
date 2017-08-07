@@ -241,11 +241,16 @@ Page({
     // }
 
     Tips.loading('加载中');
-    this.initPostType(address).then(() => {
-      Tips.loaded();
-      this.setData({
-        address: address
-      });
+    this.setData({
+      address: address
     });
+    Tips.loaded();
+   
+    //this.initPostType(address).then(() => {
+    //  Tips.loaded();
+    //  this.setData({
+    //    address: address
+    //  });
+    //});
   }
 });
