@@ -38,7 +38,7 @@ App({
     auth: {},
     //店铺缓存
     shop: {
-      code: 'eemTgbKrhqiYKMFowcBCQ1Zr7G13bWUT',
+      code: '59831e943c04ce0d8c811da9',
       name: '连江什么鬼炸鸡店',
     },
     //API地址
