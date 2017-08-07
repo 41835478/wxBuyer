@@ -55,7 +55,7 @@ export default class CartService extends BaseService {
     removeBatch(carts){
         const url = `${this.baseUrl}/carts/batch`;
         const param = carts.map(cart => {
-            return {cartId: cart.cartId}
+            return {cartId: cart.id}
         });
         return this.delete(url, param);
     }
