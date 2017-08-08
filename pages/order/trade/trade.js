@@ -19,11 +19,13 @@ Page({
     seletedDelilvery: null,
     coupons: [],
     selectedCoupon: null,
+    shopName:"",
     init: false
   },
 
   onLoad: function (options) {
     Tips.loading('订单加载中');
+    //this.shopName = this.app.globalData.shop.name;
     const trade = JSON.parse(options.trade);
     this.setData({ trade: trade });
 
@@ -81,7 +83,7 @@ Page({
     orderService.createOrder(trade, address).then(data => {
       //清理购物车
       notification.postNotificationName("ON_CART_ORDER", trade.orderGoodsInfos);
-      return data.orderId;
+      return data.id;
     }).then(orderId => {
       if (trade.paymentType == 1 && trade.finalPrice > 0) {
         //在线支付
@@ -138,7 +140,7 @@ Page({
   initPostType: function (address) {
     return orderService.queryPostPrice(address, this.data.trade.orderGoodsInfos).then(data => {
       if (data.dilivery) {
-        const seletedDelilvery = data.delilveryList.find(item => item.default);
+        const seletedDelilvery = data.delilveryList.find(item => item.def);
         const trade = this.updateTradePostFee(seletedDelilvery);
         this.setData({
           delilveries: data.delilveryList,

@@ -68,7 +68,7 @@ export default class Cart {
      */
     toggleCartCheck(cartId) {
         this.carts.forEach(cart => {
-            if (cart.cartId == cartId) {
+            if (cart.id == cartId) {
                 cart.check = !cart.check;
             }
         });

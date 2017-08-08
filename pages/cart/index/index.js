@@ -175,6 +175,9 @@ Page(Object.assign({}, Quantity, {
     //请求服务端
     cartService.update(cartId, num).then(res => {
       //修改商品数量
+      if(1 == res){
+        this.reload()
+      }
     });
   },
 

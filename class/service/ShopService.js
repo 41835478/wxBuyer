@@ -35,6 +35,7 @@ export default class ShopService extends BaseService {
             return this.get(url, {}).then(shop => {
                 shop = this._processShopInfo(shop);
                 this.app.globalData.shop.info = shop;
+                this.app.globalData.shop.name = shop.name;
                 return shop;
             });
         }
