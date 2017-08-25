@@ -10,6 +10,7 @@ const expressService = new ExpressService();
 Page({
   data: {
     order: {},
+    orderId:"",
     express: {},
     init: false
   },
@@ -17,6 +18,9 @@ Page({
   onLoad: function (options) {
     Tips.loading();
     const orderId = options.orderId;
+    this.setData({
+      orderId:orderId
+    })
     //const orderId = 1695;
 
     //获取订单信息

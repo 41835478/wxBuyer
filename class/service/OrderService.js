@@ -162,7 +162,7 @@ export default class OrderService extends BaseService {
      */
     _processGoodsComment(data) {
         const comment = {};
-        comment.createTime = data.createTime.substring(0, 10);
+        comment.createTime = data.createTime ? data.createTime.substring(0, 10):'未知';
         comment.starArr = [0, 0, 0, 0, 0];
         for (let i = 0; i < data.star; i++) {
             comment.starArr[i] = 1;
@@ -250,7 +250,8 @@ export default class OrderService extends BaseService {
                     skuText: skuText,
                     imageUrl: imageUrl,
                     goodsPrice: price,
-                    count: num
+                    count: num,
+                    innerCid:goods.innerCid
                 }
             ],
             shopName: this.shopName

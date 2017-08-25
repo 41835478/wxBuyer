@@ -3,7 +3,7 @@
 <!--输入：...order-->
 <import src="/templates/order/goods/order-goods-template.wxml" />
 <template name="orderItemTemplate">
-    <view class="order-item-container" catchtap="onOrderTap" data-order-id="{{orderId}}">
+    <view class="order-item-container" catchtap="onOrderTap" data-order-id="{{id}}">
         <!--基本信息-->
         <view class="order-header-container">
             <view class="order-shop-info-container">
@@ -35,7 +35,7 @@
 
             <!--待付款-->
             <block wx:if="{{status == 1}}">
-                <view class="zan-btn zan-btn--small" data-order-id="{{orderId}}" catchtap="onOrderClose">取消订单</view>
+                <view class="zan-btn zan-btn--small" data-order-id="{{id}}" catchtap="onOrderClose">取消订单</view>
                 <view class="zan-btn zan-btn--small zan-btn--primary" data-order-id="{{orderId}}" catchtap="onWxPay">确认付款</view>
             </block>
             <!--发货-->
@@ -52,7 +52,7 @@
 
             <!--待评论-->
             <block wx:if="{{status == 4}}">
-                <view class="zan-btn zan-btn--small zan-btn--primary" data-order-id="{{orderId}}" catchtap="onOrderComment">评价订单</view>
+                <view class="zan-btn zan-btn--small zan-btn--primary" data-order-id="{{id}}" catchtap="onOrderComment">评价订单</view>
             </block>
 
         </view>

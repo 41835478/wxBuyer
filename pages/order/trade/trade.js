@@ -173,7 +173,8 @@ Page({
       //尚未选择地址
       return;
     }
-    const actions = this.data.delilveries.map(item => `${item.desc} ￥${item.fee}`);
+    Router.postwayIndexRedirect(this.data.delilveries);
+    /*const actions = this.data.delilveries.map(item => `${item.desc} ￥${item.fee}`);
     Tips.action(actions).then(res => {
       const seletedDelilvery = this.data.delilveries[res.index];
       const trade = this.updateTradePostFee(seletedDelilvery);
@@ -181,7 +182,9 @@ Page({
         seletedDelilvery: seletedDelilvery,
         trade: trade
       });
-    });
+    }); */
+
+
   },
 
   //******************* 价格计算 ******************/

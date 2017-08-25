@@ -197,7 +197,7 @@ Page({
    */
   onOrderComment: function (event) {
     const orderId = event.currentTarget.dataset.orderId;
-    const order = this.data.orders.find(order => order.orderId == orderId);
+    const order = this.data.orders.find(order => order.id == orderId);
 
     const scores = order.orderGoodsInfos.map(item => {
       return {

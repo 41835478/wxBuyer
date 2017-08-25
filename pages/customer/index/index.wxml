@@ -44,6 +44,19 @@
             </view>
             <view class="zan-cell__ft"></view>
         </view>
+        <view class="zan-cell zan-cell--access" >
+            <view class="zan-cell__bd">
+                <image src="/images/icons/cooperate.png" />
+                <contact-button 
+                    type="default-light" 
+                    size="20"
+                    session-from="weapp"
+                >hello
+                </contact-button>
+            </view>
+            <view class="zan-cell__ft">
+            </view>
+        </view>
     </view>
 
     <!--<view class="zan-panel">

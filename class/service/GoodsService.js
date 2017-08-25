@@ -96,12 +96,6 @@ export default class GoodsService extends BaseService {
     _processGoodsPostFeeText(detail) {
         const fee = detail.postFee;
         let feeText = '';
-        if (!fee || fee == 0) {
-            feeText = '配送：免运费';
-        }
-        else {
-            feeText = `同城配送：￥${fee} (支持自提)`;
-        }
         detail.feeText = feeText;
     }
 

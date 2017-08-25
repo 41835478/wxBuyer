@@ -48,7 +48,7 @@ Page({
     
     Tips.confirm('确认评价？').then(() => {
       Tips.loading();
-      return orderService.comment(orderId, data);
+      return orderService.comment(orderId, data[0]);
     }).then(res => {
       Tips.toast('评价成功', () => Router.orderIndexRefresh());
     });

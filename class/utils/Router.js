@@ -81,7 +81,12 @@ export default class Router {
     static addressIndexRedirect(reload = false) {
         this.redirectTo(`/pages/address/index/index?reload=${reload}`);
     }
-
+    /**
+     * 运费列表(跳转)
+     */
+    static postwayIndexRedirect(tradeList) {
+      this.goto(`/pages/order/postway/postway?tradeList=${tradeList}`);
+    }
     /**
     * 地址列表
     */

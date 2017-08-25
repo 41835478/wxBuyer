@@ -1,0 +1,32 @@
+<!--postway.wxml-->
+<view class="container">
+    <view class="gap"></view>
+    <view class="address-list-container">
+        <block wx:for="{{tradeList}}" wx:key="id">
+                      <view class="address-item-container">
+                    <!-- 地址内容 -->
+                    <view class="address-info-container" data-id="{{id}}" catchtap="onAddressTap">
+                        <view class="address-name-phone-container">
+                            <text class="address-info-name">{{name}}</text>
+                            <text class="address-info-phone">{{phone}}</text>
+                        </view>
+                        <view class="address-detail-container">
+                            <text class="address-info-detail">{{fullAddress}}</text>
+                        </view>
+                    </view>
+                     <view class="zan-cell {{address ? 'zan-cell--access': ''}}" catchtap="onPostFeeTap">
+                        <text class="zan-cell__bd">配送方式</text>
+                        <text class="zan-cell__ft" wx:if="{{address}}">{{seletedDelilvery.desc}} {{seletedDelilvery.fee != 0 ? ' +￥' + seletedDelilvery.fee : '免邮' }} </text>
+                        <text class="zan-cell__ft" wx:else>请选择收货地址</text>
+                    </view>
+                </view>
+            <view class="gap"></view>
+        </block>
+    </view>
+
+    <!--占位提示-->
+    <view class="order-empty-tips" wx:if="{{addresses.length == 0}}">
+        <image src="/images/icons/order-empty.png" />
+        <text>您还没有收货地址</text>
+    </view>
+</view>

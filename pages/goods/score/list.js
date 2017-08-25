@@ -22,9 +22,9 @@ Page(Object.assign({}, Tab, {
         {
           "tab": {
             "list": [
-              { "id": "GOOD", "title": `满意（${res.GOOD}）` },
-              { "id": "NORMAL", "title": `一般（${res.NORMAL}）` },
-              { "id": "BAD", "title": `不满意（${res.BAD}）` }
+              { "id": "GOOD", "title": `满意（${res.good}）` },
+              { "id": "NORMAL", "title": `一般（${res.normal}）` },
+              { "id": "BAD", "title": `不满意（${res.bad}）` }
             ],
             "selectedId": "GOOD",
             "scroll": false
@@ -47,7 +47,7 @@ Page(Object.assign({}, Tab, {
    */
   loadNextPage: function () {
     const param = {
-      status: this.data.tab.selectedId,
+      starMark: this.data.tab.selectedId,
       goods_id: this.data.goodsId
     };
     this.page.next(param).then(data => {

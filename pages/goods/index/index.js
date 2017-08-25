@@ -58,7 +58,7 @@ Page(Object.assign({}, Quantity, {
     couponService.shelf().then(data => this.setData({ shelf: data }));
 
     // 评论数量
-    orderService.commentCount(goodsId).then(data => this.setData({commentNum: data.ALL}));
+    orderService.commentCount(goodsId).then(data => this.setData({commentNum: data.all}));
 
     //获取购物车商品数量
     this.setCartNumFromApp();
