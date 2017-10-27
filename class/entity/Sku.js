@@ -32,7 +32,7 @@ export default class Sku {
         //SKU 面板的动作
         this.action = "";
         //库存
-        this.skuStocks = goods.goodsStocks;
+        this.skuStocks = [];
         //是否可以点击下一步
         this.next = false;
         //无法选择的SKU值
@@ -50,6 +50,7 @@ export default class Sku {
         //没有规格的情况
         if (this.labels && this.labels.length > 0) {
             this.exists = true;
+            this.fetchSkuStock();
         }
         //初始化已被选择的对象 / 占位符
         for (let i in this.labels) {
@@ -59,7 +60,7 @@ export default class Sku {
         }
         //初始化无规格商品的库存
         if (this.exists) {
-            this.stock = this.skuStocks[0].stock;
+          this.stock = this.skuStocks[0].goodsSkuDetailBase.stock;
         }else{
           this.stock = this.goods.stock;
         }
@@ -68,6 +69,14 @@ export default class Sku {
         this.disabledSkuValues = this.grepDisabledskuValues();
     }
 
+    fetchSkuStock(){
+      //检索当前SKU的信息
+      const details = this.goods.goodsSkuInfo.goodsSkuDetails;
+      for (let i in details) {
+        const detail = details[i];
+        this.skuStocks.push(detail)
+      }
+    }
     /**
      * 选择某个SKU参数
      */
@@ -106,7 +115,7 @@ export default class Sku {
                 const sku = remainSkuValues[i];
                 const sellingSku = skuStocks
                     .filter(item => item.sku.indexOf(sku) != -1)
-                    .find(item => item.stock != 0);
+                  .find(item => item.goodsSkuDetailBase.stock != 0);
                 if (sellingSku == null) {
                     disabledSkuValues[sku] = true;
                 }
@@ -258,7 +267,7 @@ export default class Sku {
         for (let i in stocks) {
             const stockInfo = stocks[i];
             if (stockInfo.sku == skuText) {
-                this.stock = stockInfo.stock;
+              this.stock = stockInfo.goodsSkuDetailBase.stock;
             }
         }
     }

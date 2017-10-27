@@ -14,7 +14,8 @@
 
         <!-- 销量窗口(浮动) -->
         <view class="goods-sales-container">
-            <text>销量: {{salesVolume}}</text>
+           <text class="" wx:if="{{salesVolume}}">销量 {{salesVolume}}</text>
+            <text class="" wx:else>销量 1</text>
         </view>
 
         <view class="hr-light"></view>

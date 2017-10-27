@@ -21,10 +21,9 @@
             <text class="zan-cell__ft">{{trade.paymentText}}</text>
         </view>
 
-        <view class="zan-cell {{address ? 'zan-cell--access': ''}}" catchtap="onPostFeeTap">
-            <text class="zan-cell__bd">配送方式</text>
-            <text class="zan-cell__ft" wx:if="{{address}}">{{seletedDelilvery.desc}} {{seletedDelilvery.fee != 0 ? ' +￥' + seletedDelilvery.fee : '免邮' }} </text>
-            <text class="zan-cell__ft" wx:else>请选择收货地址</text>
+        <view class="zan-cell {{address ? 'zan-cell--access': ''}}" catchtap="onPostFeeTypeTap">
+            <text class="zan-cell__bd">运费详情</text>
+            <text class="zan-cell__ft">{{totalPostFee != 0 ? ' +￥' + totalPostFee : '免邮' }} </text>
         </view>
         <view class="zan-cell {{coupons.length>0 ? 'zan-cell--access': ''}}" catchtap="onCouponTap">
             <view class="zan-cell__bd zan-cell__flex">优惠券
@@ -43,7 +42,7 @@
             <text class="summary-title">商品金额</text>
             <text class="summary-text">￥{{trade.dealPrice}}</text>
         </view>
-        <view class="summary-line-container" wx:if="{{seletedDelilvery}}">
+        <view class="summary-line-container" wx:if="{{totalPostFee}}">
             <text class="summary-title">运费</text>
             <text class="summary-text">+￥{{trade.postFee}}</text>
         </view>

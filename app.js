@@ -38,13 +38,14 @@ App({
     auth: {},
     //店铺缓存
     shop: {
-      code: '59831e943c04ce0d8c811da9',
-      name: '连江什么鬼炸鸡店',
+      code: '59e7199f763a1b1eb4ae3b78',
+      name: '王老师的花店',
     },
     //API地址
     //publicUrl: "http://192.168.31.124:9999/api/v1",
    // publicUrl: "http://121.42.178.251:9999/v1",
     //publicUrl: "https://api.leshare.shop/v1",
-    publicUrl: "http://localhost:9999/v1/customer",
+    publicUrl: "http://www.xdeition.com/v1/customer",
+    //publicUrl: "http://www.xedtion.com//v1/customer",
   }
 });

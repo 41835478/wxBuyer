@@ -20,6 +20,7 @@ Page({
     coupons: [],
     selectedCoupon: null,
     shopName:"",
+    totalPostFee:0.0,
     init: false
   },
 
@@ -121,17 +122,22 @@ Page({
 
   onPayTypeTap: function (event) {
     const trade = this.data.trade;
-    Tips.actionWithFunc(['在线支付', '线下支付'],
-      () => {
-        trade.paymentText = '在线支付';
-        trade.paymentType = 1;
-        this.setData({ trade: trade });
-      },
+    Tips.actionWithFunc(['线下支付', '在线支付'],
       () => {
         trade.paymentText = '线下支付';
         trade.paymentType = 0;
         this.setData({ trade: trade });
-      });
+      },
+      () => {
+        trade.paymentText = '在线支付(暂未开放)';
+        trade.paymentType = 1;
+        this.setData({ trade: trade });
+      },);
+  },
+
+  onPostFeeTypeTap: function (event) {
+    const delilveries = this.data.delilveries;
+    Tips.action(delilveries);
   },
 
   //******************* 运费操作 ******************/
@@ -139,12 +145,12 @@ Page({
 
   initPostType: function (address) {
     return orderService.queryPostPrice(address, this.data.trade.orderGoodsInfos).then(data => {
-      if (data.dilivery) {
-        const seletedDelilvery = data.delilveryList.find(item => item.def);
-        const trade = this.updateTradePostFee(seletedDelilvery);
+      if (data.delivery) {
+        //const seletedDelilvery = data.delilveryList.find(item => item.def);
+        const trade = this.updateTradePostFee(data);
         this.setData({
-          delilveries: data.delilveryList,
-          seletedDelilvery: seletedDelilvery,
+          totalPostFee: data.totalFee,
+          delilveries: data.deliveryList,
           trade: trade
         });
       }
@@ -154,12 +160,12 @@ Page({
   /**
    * 更新订单的运费信息
    */
-  updateTradePostFee: function (delilvery) {
+  updateTradePostFee: function (data) {
     const trade = this.data.trade;
 
     //运费属性
-    trade.deliveryType = delilvery.type;
-    trade.postFee = delilvery.fee.toFixed(2);
+    //trade.deliveryType = delilvery.type;
+    trade.postFee = data.totalFee.toFixed(2);
 
     return this.refreshTradePrice(trade);
   },

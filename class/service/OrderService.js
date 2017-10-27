@@ -208,7 +208,8 @@ export default class OrderService extends BaseService {
                 goodsPrice: goods.goodsPrice,
                 count: goods.goodsNum,
                 skuText: goods.skuText,
-                goodsSku: goods.goodsSku
+                goodsSku: goods.goodsSku,
+                supplierId:goods.supplierId
             };
             orderGoodsInfos.push(info);
             price += goods.goodsPrice * goods.goodsNum;
@@ -251,7 +252,8 @@ export default class OrderService extends BaseService {
                     imageUrl: imageUrl,
                     goodsPrice: price,
                     count: num,
-                    innerCid:goods.innerCid
+                    innerCid:goods.innerCid,
+                    supplierId:goods.supplierId
                 }
             ],
             shopName: this.shopName

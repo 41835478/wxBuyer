@@ -5,17 +5,6 @@
 
 
 <view class="container" wx:if="{{init}}">
-    <view class="cart-header-container" wx:if="{{cart.carts.length > 0}}">
-
-        <view class="cart-shop-info-container">
-            <view class="cart-check-container" catchtap="onCheckAllTap">
-                <view class="zan-icon zan-icon-{{cart.all ? 'checked' : 'check'}}" />
-            </view>
-            <image class="shop-info-icon" src="/images/icons/shop-gray.png" />
-            <text class="shop-info-name">{{shopName}}</text>
-        </view>
-        <text class="cart-batch-edit" catchtap="onBatchTap"> {{cart.batch ? '完成' : '编辑'}}</text>
-    </view>
 
     <!--占位提示-->
     <view class="cart-empty-tips" wx:if="{{cart.carts.length == 0}}">
